@@ -1,4 +1,8 @@
 <?php
+
+	ini_set('display_errors',1);
+	ini_set('display_startup_errors',1);
+	error_reporting(-1);
 	
 	// first php code !
 
@@ -20,10 +24,11 @@
 
 	echo "php variables<br>";
 
+	echo "<br>";
+
 		// defining a variable below!
 		$name = "David";
 
-		echo "<br>";
 		
 		// printing a variable (way 1) and concatenating a br/ 
 		echo "$name" . '<br>';
@@ -79,16 +84,17 @@
 		echo $num3;
 
 		/*	exponents don't work in php 5 yet, lol
-		// exponents
-		$num3 = $num1 ** $num2  . '<br>' ;
-		echo $num3;
+			
+			// exponents
+			$num3 = $num1 ** $num2  . '<br>' ;
+			echo $num3;
+
 		*/
 
 		// modulus
 		$num3 = $num1 % $num2 . '<br>' ;
 		echo $num3;
 
-		
 	echo "<br>";
 
 	// php loops
@@ -122,10 +128,12 @@
 		} while ($z <= 10);
 
 
-		// for loop
+		// less than or equal to
 		echo "Here is a for loop for you :)<br>";
 		for ($xy = 0; $xy <= 10; $xy++) {
 			echo "The number is: $xy <br>";
+			// returns 10 because $xy is less than or equal to 
+			// constraint
 		}
 
 		// loop for each
@@ -136,50 +144,105 @@
 		foreach ($colors as $value) {
 			echo "$value <br>";
 		}
-
-		
+	
 	echo "<br>";
 
 	// php Comparison Operators
 
 	echo "php comparison operators<br>";
-
-		echo "<br>";
+		
+	echo "<br>";
 
 		// declaring some global variables
+		echo "declaring integer variable value of 100 <br>";
 		$x = 100;
+		echo "declaring string variable value of 100 <br>";
 		$y = "100";
+		
+		// equal
+		echo "is 100 equal to string 100 ? <br>";
+		var_dump($x == $y);
+		echo "<br>";
 
-		var_dump($x == $y); // returns true because values are equal
-
+		// identical
+		echo "is 100 identical to 100 ? <br>";
+		var_dump($x === $y);   
+		// returns false because because variables not exactly equal	
 		echo "<br>";
 		
-		// declares variable and sets it equal to the boolean value as a function of comparison operator
-		$booleanValue = var_dump($x == $y);
-		echo "$booleanValue";
-
+		// not equal
+		echo "is 100 not equal to  100 ? <br>";
+		var_dump($x != $y);
+		// returns false because because variables 'are' equal
 		echo "<br>";
 
-		// declares variable and sets it equal to the boolean value as a function of comparison operator
-		$booleanValue = var_dump($x === $y);   // returns false because because variables not exactly equal
-		echo "$booleanValue";
+		// not equal
+		echo "is 100 not equal to 100 ? <br>";
+		var_dump($x <> $y); 
+		// not equal operator 2, also returns false	 		
+		echo "<br>";
+
+		// not identical
+		echo "is 100 not identical to 100 ? <br>";
+		var_dump($x !== $y); 
+		// returns false because variables 
+		// are not (not-identical) 
+		echo "<br>";
+
+		// greater than
+		echo "is 100 greater than 100 ? <br>";
+		var_dump($x > $y); 
+		//  returns false because $x is not (greater) than $y
+		echo "<br>";
+
+		// less than
+		echo "is 100 less than 100 ? <br>";
+		var_dump($x < $y);
+		// returns false because $x is not (less) than $y
+		echo "<br>";
+
+		// greater than or equal to
+		echo "is 100 greater than or equal to 100 ? <br>";
+		var_dump($x >= $y);
+		// returns true because 100 is 
+		// greater than or equal to 100
+		echo "<br>";
+
+	echo "<br>";
+
+	// php inclement / decrement operators
+
+	echo "php increment / decrement operators<br>";
 		
-		echo "<br>";
-		
-		// declares variable and sets it equal to the boolean value as a function of comparison operator
-		$booleanValue = var_dump($x != $y); // returns false because because variables 'are' equal
-		echo "$booleanValue";		 
+	echo "<br>";
 
-		echo "<br>";
+		// pre-increment
+		echo "pre-increment  <br>";
+		$x = 10;
+		echo $x . "<br>";
+		echo ++$x . "<br>";
+		echo $x . "<br>";
 
-		// declares variable and sets it equal to the boolean value as a function of comparison operator
-		$booleanValue = var_dump($x <> $y); // not equal operator 2, also returns false
-		echo "$booleanValue";		 		
+		// post-increment
+		echo "post-increment <br>";
+		$x = 10;
+		echo $x . "<br>";
+		echo $x++ . "<br>";
+		echo $x . "<br>";
 
-		echo "<br>";
+		//	pre-decrement
+		echo "pre-decrement <br>";
+		$x = 10;
+		echo $x . "<br>";
+		echo --$x . "<br>";
+		echo $x . "<br>";
 
-		//
-
+		// post-decrement
+		echo "post-decrement <br>";
+		$x = 10;
+		echo $x . "<br>";
+		echo $x-- . "<br>";
+		echo $x . "<br>";
 
 ?>
 
