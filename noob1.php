@@ -58,6 +58,7 @@
 	echo "<br>";
 
 		// declaring integer type variables
+		// declaring some global variables
 		$num1 = 10;
 		$num2 = 20;
 
@@ -145,13 +146,39 @@
 
 		echo "<br>";
 
+		// declaring some global variables
 		$x = 100;
 		$y = "100";
 
 		var_dump($x == $y); // returns true because values are equal
 
-
+		echo "<br>";
 		
+		// declares variable and sets it equal to the boolean value as a function of comparison operator
+		$booleanValue = var_dump($x == $y);
+		echo "$booleanValue";
+
+		echo "<br>";
+
+		// declares variable and sets it equal to the boolean value as a function of comparison operator
+		$booleanValue = var_dump($x === $y);   // returns false because because variables not exactly equal
+		echo "$booleanValue";
+		
+		echo "<br>";
+		
+		// declares variable and sets it equal to the boolean value as a function of comparison operator
+		$booleanValue = var_dump($x != $y); // returns false because because variables 'are' equal
+		echo "$booleanValue";		 
+
+		echo "<br>";
+
+		// declares variable and sets it equal to the boolean value as a function of comparison operator
+		$booleanValue = var_dump($x <> $y); // not equal operator 2, also returns false
+		echo "$booleanValue";		 		
+
+		echo "<br>";
+
+		//
 
 
 ?>
