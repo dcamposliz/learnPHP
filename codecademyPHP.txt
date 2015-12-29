@@ -1,0 +1,299 @@
+
+Looping the Loop
+
+--
+
+A loop is a structure that tells a computer to execute a set of statements multiple times. If you have a process that you want repeated hundreds of times, it pays to put it in a loop so you don't need to write hundreds of lines of code.
+
+If you are working on these courses in order, you have already seen how a for loop can allow for a set number of loop iterations. But what about a situation where (due to randomness, perhaps) you don't know how many times the loop should repeat? In that case, you can use a while loop.
+
+A while loop will execute as long as a certain condition is true. For example, the loop in the editor will simulate coin flips as long as the number of consecutive heads is less than 3.
+
+--
+
+While Loop Syntax
+
+--
+
+In the last exercise, you saw how a while loop can be used to repeat a set of commands an unknown number of times. That loop used the following syntax:
+
+while(cond) {
+   // looped statements go here
+}
+where the statements in side the curly braces { and } are executed as long as the condition cond is evaluated as true. In the last exercise, cond was the condition that the number of consecutive heads was less than 3: $headCount < 3.
+
+It is important when writing loops to make sure that the loop will exit at some point. The loop
+
+while(2 > 1){
+   // Code
+}
+will never exit and is an example of an infinite loop. Avoid infinite loops like the plague! This is why we need to include $loopCond = false; in line 12. If you submit an infinite loop in one of these exercises, you will need to reload the page to stop it.
+
+--
+
+Your First While Loop
+
+--
+
+Now it is time for you to write your own while loop from scratch. Maybe you could reproduce the behavior of one of your for loops from the previous course, or you could try to write your own coin flip program. The beauty of programming is that you can do whatever you want!
+
+Unless you want to write an infinite loop on purpose (which you don't!), do not write infinite loops! And if you find you have submitted one, refresh the page to stop it.
+
+--
+
+Using Endwhile
+
+--
+
+PHP offers the following alternative syntax for while loops:
+
+while(cond):
+   // looped statements go here
+endwhile;
+Note the colon after the end parenthesis and the semicolon after the endwhile statement.
+
+When they are embedded in HTML, loops that use this endwhile syntax can be more readable than the equivalent syntax involving curly braces.
+
+    while(cond) {
+       // looped statements go here
+    }
+
+Feel free to use whichever syntax you prefer... except on this exercise!
+
+--
+
+How Do You Do-While?
+
+--
+
+You may have noticed that a while loop checks the loop condition before each iteration of the code inside. A logical alternative is to check the condition after each iteration before looping back. A do/while loop does just that. One consequence of this difference is that the code inside a while loop can be bypassed entirely whereas the code inside a do/while loop will execute at least once.
+
+This means that the loop condition can depend exclusively on code within the loop's body. This is the case for the code in the editor where each iteration represents a coin flip, and any time the result of the coin flip is tails, the loop stops.
+
+--
+
+In the previous exercise, you saw how a do/while could be used to ensure that the code in a loop executed at least once. For example:
+
+<?php
+$i = 0;
+do {
+    echo $i;
+} while ($i > 0);
+?>
+This do / while loop only runs once and then exits:
+
+First we set $i equal to 0.
+Second, the loop runs once and outputs $i, which is 0.
+Then the condition while ($i > 0); is checked. Since $i is not greater than 0, the condition evaluates to false, and thedo/while` loop stops.
+
+--
+
+Introducing Functions
+
+--
+
+Functions are reusable pieces of code that you can use throughout an application, saving you lots of copying and pasting.
+
+PHP has lots of built-in functions, and we'll learn some of them in these exercises. The first set of functions we'll learn about are string manipulation functions.
+
+strlen() is one of the most common String functions in PHP. You pass it a string, or variable containing a string, and it returns the number of characters in that string. An example might be:
+
+<?php
+  // get the length of a string and
+  // print it to the screen
+  $length = strlen("david");
+  print $length;
+?>
+
+--
+
+String Functions I
+
+--
+
+Another very common string function is substr(). This function allows you to return a substring (piece of) of your string.
+
+You pass this function the string you want to get a substring of, the character in your string to start at, and how many characters you want after your starting point. An example might be:
+
+$myname = "David";
+
+// you can manipulate strings easily
+// with built-in funtions too
+$partial = substr($myname, 0, 3);
+print $partial;
+// prints "dav"
+NOTE: the second parameter (the starting character) is based on a zero-indexed array (i.e. the first character in your string is number 0, not number 1).
+
+Two other very useful string functions are strtoupper() and strtolower(), which make your entire string UPPERCASE or lowercase. Here is an example of each:
+
+$uppercase = strtoupper($myname);
+print $uppercase;
+// prints "DAVID"
+
+$lowercase = strtolower($uppercase);
+print $lowercase;
+// prints "david"
+You can also call these functions on a string directly, like so:
+
+print strtolower("David");
+// prints "david"
+
+--
+
+String Functions II
+
+--
+
+strpos() find the position of the first occurrence of a substring in a string.
+
+strpos("emily", "e");   // 0
+strpos("emily", "i");   // 2
+strpos("emily", "ily"); // 2
+strpos("emily", "zxc"); // false
+The parameters passed to strpos() are the haystack and the needle. The function tries to find the needle in the haystack.
+
+It returns either the index of the first character, or false if the needle cannot be found.
+
+if (strpos("david","h") === false) {
+  print "Sorry, no 'h' in 'david'";
+}
+// prints the "Sorry" message
+Use the editor to create your own haystack and needle combinations. You can use variables for both haystack and needle.
+
+--
+
+Math Functions I
+
+--
+
+Let's move on to a bit of arithmetic. The most common Math function you'll use is round(). This function rounds floating point numbers (numbers with decimal points in them) up or down.
+
+You can use round() to round your number to an integer, or to round off complex floating point numbers to a specific number of decimal places. This is accomplished by passing a second, optional parameter to round(), telling it how many decimal places you want the number rounded to.
+
+Here's an example:
+
+// Round pi down from 3.1416...
+$round = round(M_PI);
+print $round;  // prints 3
+
+// This time, round pi to 4 places
+$round_decimal = round(M_PI, 4);
+print $round_decimal; // prints 3.1416
+NOTE: M_PI is a PHP constant that is equal to pi.
+
+--
+
+Math Functions II
+
+--
+
+A very common and useful function is rand(). This function returns a random number between two numbers. Optionally, you can provide your min and max numbers as parameters, like this:
+
+// prints a number between 0 and 32767
+print rand();
+
+// prints a number between 1 and 10
+print rand(1,10);
+
+--
+
+Array Functions I
+
+--
+
+Arrays are a very common thing to use in programming. In fact, array() is actually a function! Good job, you have already used an array function.
+
+Aside from the array() function itself, array_push() is arguably the most common and useful function for manipulating arrays.
+
+array_push() takes two arguments: an array, and an element to add to the end of that array. Here's an example:
+
+$fav_bands = array();
+array_push($fav_bands, "Maroon 5");
+array_push($fav_bands, "Bruno Mars");
+array_push($fav_bands, "Nickelback");
+array_push($fav_bands, "Katy Perry");
+array_push($fav_bands, "Macklemore");
+Another cool array function is count(). Passing an array to count() will return the number of elements in that array. Like this:
+
+print count($fav_bands); // prints 5
+
+--
+
+Array Functions II
+
+--
+
+Another common thing to do with arrays is sort them. Handily enough, PHP has a sort() function for just such an occasion!
+
+$array = array(5, 3, 7, 1);
+sort($array);
+print join(", ", $array);
+// prints "1, 3, 5, 7"
+PHP also has the opposite function: rsort().
+
+$array = array(5, 3, 7 ,1);
+rsort($array);
+print join(":", $array);
+// prints "7:5:3:1"
+Lastly, we use join(glue, array) so we can easily print out the representations of our sorted arrays in this exercise.
+
+For this exercise, we'll use a comma (,) as the glue.
+
+--
+
+Array Functions II
+
+--
+
+Another common thing to do with arrays is sort them. Handily enough, PHP has a sort() function for just such an occasion!
+
+$array = array(5, 3, 7, 1);
+sort($array);
+print join(", ", $array);
+// prints "1, 3, 5, 7"
+PHP also has the opposite function: rsort().
+
+$array = array(5, 3, 7 ,1);
+rsort($array);
+print join(":", $array);
+// prints "7:5:3:1"
+Lastly, we use join(glue, array) so we can easily print out the representations of our sorted arrays in this exercise.
+
+For this exercise, we'll use a comma (,) as the glue.
+
+--
+
+Show What You Know!
+
+--
+
+Let's take what we've learned about strings, math, and arrays and create a game. In our game, we'll make a list of our closest family and friends and have a lottery. We will "spin the wheel" and randomly select one of our family and friends from the list.
+
+Because winning is a big deal, we'll have to display the winner's name to the public in ALL CAPS. Let's go!
+
+--
+
+<html>
+    <p>
+	<?php
+	// Create an array and push on the names
+    // of your closest family and friends
+    
+    $array = array();
+    
+    array_push($array, "Susana");
+    array_push($array, "Jessica");
+    array_push($array, "Erik");
+    array_push($array, "Roberto");
+    array_push($array, "Sarah");
+    
+    
+    
+	// Sort the list
+
+	// Randomly select a winner!
+
+	// Print the winner's name in ALL CAPS
+	?>
+	</p>
+</html>
