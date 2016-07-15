@@ -246,34 +246,5 @@
 		echo $x-- . "<br>";
 		echo $x . "<br>";
 
-	// php logical operators
-
-	// php string operators
-
-	// php array operators
-
-	// php if-else-elseif
-
-	// php switch statement
-
-	// php functions
-
-	// php arrays
-
-	// php sorting arrays
-
-	// php superglobals
-
-// php forms 
-
-// php advanced
-
-// php xml
-
-// php ajax
-
-// php examples
-
-
 ?>
 
